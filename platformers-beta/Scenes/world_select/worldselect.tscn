@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://dvxpxvs5gb1fm"]
+
+[ext_resource type="PackedScene" uid="uid://dho01p3f6lnon" path="res://Scenes/world_select/worldicon.tscn" id="1_ymb4y"]
+[ext_resource type="PackedScene" uid="uid://b3ocxvvh7x788" path="res://Scenes/world_select/playericon.tscn" id="2_inkog"]
+
+[sub_resource type="GDScript" id="GDScript_1mlmd"]
+script/source = "extends Control
+
+@onready var worlds: Array = [$worldicon, $worldicon2, $worldicon3, $worldicon4, $worldicon5]
+
+var current_world: int = 0
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	$playericon.global_position= worlds[current_world].global_position # Replace with function body.
+
+
+func _input(event):
+	if event.is_action(\"ui_left\") and current_world > 0:
+		current_world -= 1
+		$playericon.global_position = worlds[current_world].global_position
+
+	if event.is_action(\"ui_right\") and current_world < worlds.size() - 1:
+		current_world += 1
+		$playericon.global_position = worlds[current_world].global_position
+		
+		print(\"hello\")
+		
+"
+
+[sub_resource type="GDScript" id="GDScript_inkog"]
+resource_name = "world_icon"
+script/source = "extends Control
+
+@export var world_indx: int = 1
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	$Label.text = \"World\" + str(world_indx)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	if Engine.is_editor_hint():
+		$Label.text = \"World\" + str(world_indx)
+"
+
+[node name="worldselect" type="Control" unique_id=1769435714]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_1mlmd")
+
+[node name="worldicon" parent="." unique_id=1191579448 instance=ExtResource("1_ymb4y")]
+layout_mode = 0
+offset_left = 129.0
+offset_top = 72.0
+offset_right = 193.0
+offset_bottom = 136.0
+pivot_offset_ratio = Vector2(32, 32)
+script = SubResource("GDScript_inkog")
+
+[node name="worldicon2" parent="." unique_id=1464689398 instance=ExtResource("1_ymb4y")]
+layout_mode = 0
+offset_left = 249.0
+offset_top = 104.0
+offset_right = 313.0
+offset_bottom = 168.0
+pivot_offset_ratio = Vector2(32, 32)
+script = SubResource("GDScript_inkog")
+world_indx = 2
+
+[node name="worldicon3" parent="." unique_id=1794350314 instance=ExtResource("1_ymb4y")]
+layout_mode = 0
+offset_left = 409.0
+offset_top = 24.0
+offset_right = 473.0
+offset_bottom = 88.0
+pivot_offset_ratio = Vector2(32, 32)
+script = SubResource("GDScript_inkog")
+world_indx = 3
+
+[node name="worldicon4" parent="." unique_id=1890675082 instance=ExtResource("1_ymb4y")]
+layout_mode = 0
+offset_left = 607.0
+offset_top = 56.0
+offset_right = 671.0
+offset_bottom = 120.0
+pivot_offset_ratio = Vector2(32, 32)
+script = SubResource("GDScript_inkog")
+world_indx = 4
+
+[node name="worldicon5" parent="." unique_id=682854535 instance=ExtResource("1_ymb4y")]
+layout_mode = 0
+offset_left = 754.0
+offset_right = 818.0
+pivot_offset_ratio = Vector2(32, 32)
+script = SubResource("GDScript_inkog")
+world_indx = 5
+
+[node name="playericon" parent="." unique_id=713104588 instance=ExtResource("2_inkog")]
+layout_mode = 0
+offset_right = 57.0
+offset_bottom = 64.0

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dho01p3f6lnon"]
+
+[sub_resource type="Gradient" id="Gradient_74c48"]
+offsets = PackedFloat32Array(0.9830508, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ymb4y"]
+gradient = SubResource("Gradient_74c48")
+width = 64
+
+[node name="worldicon" type="Control" unique_id=1191579448]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="Label" type="Label" parent="." unique_id=633441877]
+layout_mode = 0
+offset_top = -24.0
+offset_right = 40.0
+offset_bottom = -1.0
+text = "World 1"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=796947521]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+texture = SubResource("GradientTexture1D_ymb4y")
