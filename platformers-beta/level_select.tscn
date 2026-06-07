@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://cwrvkllcwxwjk"]
+
+[ext_resource type="Script" uid="uid://2yc84b4p3gg2" path="res://level_select.gd" id="1_wevku"]
+[ext_resource type="PackedScene" uid="uid://dsnnqcmbpbhg4" path="res://level_icon.tscn" id="2_apu6u"]
+[ext_resource type="PackedScene" uid="uid://31yyvw038ubi" path="res://scenes/player_icon.tscn" id="3_bv7n5"]
+
+[node name="LevelSelect" type="Control" unique_id=362407145]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wevku")
+
+[node name="LevelIcon" parent="." unique_id=853424138 node_paths=PackedStringArray("next_level_right") instance=ExtResource("2_apu6u")]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 128.0
+offset_right = 200.0
+offset_bottom = 192.0
+next_level_right = NodePath("../LevelIcon2")
+
+[node name="LevelIcon2" parent="." unique_id=1886908278 node_paths=PackedStringArray("next_level_left", "next_level_right") instance=ExtResource("2_apu6u")]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 192.0
+offset_right = 344.0
+offset_bottom = 256.0
+level_name = "2"
+next_level_left = NodePath("../LevelIcon")
+next_level_right = NodePath("../LevelIcon3")
+
+[node name="LevelIcon3" parent="." unique_id=1796517312 node_paths=PackedStringArray("next_level_up", "next_level_down", "next_level_left") instance=ExtResource("2_apu6u")]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 168.0
+offset_right = 560.0
+offset_bottom = 232.0
+level_name = "3"
+next_level_up = NodePath("../LevelIcon5")
+next_level_down = NodePath("../LevelIcon4")
+next_level_left = NodePath("../LevelIcon2")
+
+[node name="LevelIcon4" parent="." unique_id=1513223939 node_paths=PackedStringArray("next_level_up") instance=ExtResource("2_apu6u")]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 344.0
+offset_right = 576.0
+offset_bottom = 408.0
+level_name = "3B"
+next_level_up = NodePath("../LevelIcon3")
+
+[node name="LevelIcon5" parent="." unique_id=443377191 node_paths=PackedStringArray("next_level_down", "next_level_right") instance=ExtResource("2_apu6u")]
+layout_mode = 0
+offset_left = 504.0
+offset_top = 56.0
+offset_right = 568.0
+offset_bottom = 120.0
+level_name = "4"
+next_level_down = NodePath("../LevelIcon3")
+next_level_right = NodePath("../LevelIcon6")
+
+[node name="LevelIcon6" parent="." unique_id=1789992988 node_paths=PackedStringArray("next_level_left", "next_level_right") instance=ExtResource("2_apu6u")]
+layout_mode = 0
+offset_left = 672.0
+offset_top = 56.0
+offset_right = 736.0
+offset_bottom = 120.0
+level_name = "5"
+next_level_left = NodePath("../LevelIcon5")
+next_level_right = NodePath("../LevelIcon7")
+
+[node name="LevelIcon7" parent="." unique_id=269081670 node_paths=PackedStringArray("next_level_left") instance=ExtResource("2_apu6u")]
+layout_mode = 0
+offset_left = 872.0
+offset_top = 64.0
+offset_right = 936.0
+offset_bottom = 128.0
+level_name = "6"
+next_level_left = NodePath("../LevelIcon6")
+
+[node name="PlayerIcon" parent="." unique_id=246324768 instance=ExtResource("3_bv7n5")]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 112.0
+offset_right = 88.0
+offset_bottom = 176.0
