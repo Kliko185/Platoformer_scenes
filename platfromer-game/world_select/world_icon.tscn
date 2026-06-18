@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://cty8lppfym0m3"]
+
+[sub_resource type="GDScript" id="GDScript_4ulm1"]
+resource_name = "world_icon"
+script/source = "@tool
+extends Control
+
+@export var world_index: int = 1
+@export var level_select_packed: PackedScene = load(\"res://level_select/level_select.tscn\")
+@onready var level_select_scene: LevelSelect = level_select_packed.instantiate()
+
+func _ready():
+	$Label.text = \"World \" + str(world_index)
+
+func _process(_delta):
+	if Engine.is_editor_hint():
+		$Label.text = \"World \" + str(world_index)
+"
+
+[sub_resource type="Gradient" id="Gradient_4ulm1"]
+offsets = PackedFloat32Array(0.9811321, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tqj5y"]
+gradient = SubResource("Gradient_4ulm1")
+width = 64
+
+[node name="WorldIcon" type="Control" unique_id=1088789130]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 64.0
+offset_bottom = 64.0
+pivot_offset_ratio = Vector2(32, 32)
+script = SubResource("GDScript_4ulm1")
+
+[node name="Label" type="Label" parent="." unique_id=112479568]
+layout_mode = 0
+offset_top = -24.0
+offset_right = 64.0
+offset_bottom = -1.0
+text = "World 1"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=606480371]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+pivot_offset_ratio = Vector2(32, 32)
+texture = SubResource("GradientTexture1D_tqj5y")
